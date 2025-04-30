@@ -1,12 +1,14 @@
-import Container from "./Container";
+import Container from './Container'
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import img from '../../../assets/images/logo.png'
 
 
 
 const Navbar = () => {
- 
+  const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +20,7 @@ const Navbar = () => {
             <Link to="/">
               <img
                 // className='hidden md:block'
-                src="https://i.ibb.co/4ZXzmq5/logo.png"
+                src={img}
                 alt="logo"
                 width="100"
                 height="100"
@@ -29,14 +31,14 @@ const Navbar = () => {
               <div className="flex flex-row items-center gap-3">
                 {/* Become A Host btn */}
                 <div className="hidden md:block">
-                  (
+                  {!user && (
                     <button
-                     
+                      disabled={!user}
                       className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
                     >
                       Host your home
                     </button>
-                  )
+                  )}
                 </div>
                 {/* Dropdown btn */}
                 <div
@@ -49,7 +51,7 @@ const Navbar = () => {
                     <img
                       className="rounded-full"
                       referrerPolicy="no-referrer"
-                      src="https://i.ibb.co/4ZXzmq5/logo.png"
+                      src={user && user.photoURL ? user.photoURL : img}
                       alt="profile"
                       height="30"
                       width="30"
