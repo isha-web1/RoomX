@@ -24,7 +24,7 @@ const SignUp = () => {
                 name='name'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-cyan-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -33,6 +33,7 @@ const SignUp = () => {
                 Select Image:
               </label>
               <input
+              className='bg-gray-500'
                 required
                 type='file'
                 id='image'
@@ -50,7 +51,7 @@ const SignUp = () => {
                 id='email'
                 required
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-cyan-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -67,7 +68,7 @@ const SignUp = () => {
                 id='password'
                 required
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-cyan-500 bg-gray-200 text-gray-900'
               />
             </div>
           </div>
@@ -75,7 +76,7 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-cyan-600 w-full rounded-md py-3 text-white'
             >
               Continue
             </button>
@@ -97,7 +98,7 @@ const SignUp = () => {
           Already have an account?{' '}
           <Link
             to='/login'
-            className='hover:underline hover:text-rose-500 text-gray-600'
+            className='hover:underline hover:text-cyan-500 text-gray-600'
           >
             Login
           </Link>

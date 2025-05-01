@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import img from '../../../assets/images/logo.png'
+import placeHolder from '../../../assets/images/placeholder.jpg'
 
 
 
@@ -51,7 +52,7 @@ const Navbar = () => {
                     <img
                       className="rounded-full"
                       referrerPolicy="no-referrer"
-                      src={user && user.photoURL ? user.photoURL : img}
+                      src={user && user.photoURL ? user.photoURL : placeHolder}
                       alt="profile"
                       height="30"
                       width="30"

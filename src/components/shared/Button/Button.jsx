@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+
 const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
   return (
     <button
@@ -13,8 +13,8 @@ const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
           transition
           px-4
           w-full
-          ${outline ? 'bg-white' : 'bg-rose-500'}
-          ${outline ? 'border-black' : 'border-rose-500'}
+          ${outline ? 'bg-white' : 'bg-cyan-500'}
+          ${outline ? 'border-black' : 'border-cyan-500'}
           ${outline ? 'text-black' : 'text-white'}
           ${small ? 'text-sm' : 'text-md'}
           ${small ? 'py-1' : 'py-3'}
@@ -37,13 +37,6 @@ const Button = ({ label, onClick, disabled, outline, small, icon: Icon }) => {
   )
 }
 
-Button.propTypes = {
-  label: PropTypes.string,
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-  outline: PropTypes.bool,
-  small: PropTypes.bool,
-  icon: PropTypes.elementType,
-}
+
 
 export default Button

@@ -1,5 +1,6 @@
 
-import { ScaleLoader } from 'react-spinners'
+import { HashLoader} from 'react-spinners'
+
 
 const LoadingSpinner = ({ smallHeight }) => {
   return (
@@ -10,7 +11,7 @@ const LoadingSpinner = ({ smallHeight }) => {
       justify-center 
       items-center `}
     >
-      <ScaleLoader size={100} color='red' />
+      <HashLoader size={100} color='gray' />
     </div>
   )
 }
