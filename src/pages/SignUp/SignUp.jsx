@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { TbFidgetSpinner } from "react-icons/tb";
+import { ImSpinner4 } from "react-icons/im";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -49,6 +49,20 @@ const SignUp = () => {
       toast.error(err.message);
     }
   };
+
+
+    // handle google signin
+    const handleGoogleSignIn = async () => {
+      try {
+        await signInWithGoogle()
+  
+        navigate('/')
+        toast.success('Signup Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err.message)
+      }
+    }
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -123,7 +137,7 @@ const SignUp = () => {
               className="bg-cyan-700 w-full rounded-md py-3 text-white"
             >
               {loading ? (
-                <TbFidgetSpinner className="animate-spin m-auto" />
+                <ImSpinner4 className="animate-spin m-auto" />
               ) : (
                 "Continue"
               )}
@@ -139,7 +153,7 @@ const SignUp = () => {
         </div>
         <button
           disabled={loading}
-         
+          onClick={handleGoogleSignIn}
           className="disabled:cursor-not-allowed flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
