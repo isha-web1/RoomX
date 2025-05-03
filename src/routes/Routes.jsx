@@ -6,6 +6,7 @@ import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivetRoute from "./PrivetRoute";
+import DashboardLayout from "../layout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,15 @@ export const router = createBrowserRouter([
         element: <PrivetRoute> <RoomDetails /></PrivetRoute>,
       },
     ],
+  },
+  {
+     path : "/dashboard",
+     element : <DashboardLayout/>,
+     children : [
+      {
+        
+      }
+     ]
   },
   { path: '/login', element: <Login /> },
   { path: '/signup', element: <SignUp /> },
