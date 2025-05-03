@@ -1,17 +1,17 @@
 import { useState } from "react";
 import Button from "../shared/Button/Button";
-import { DateRangePicker } from 'react-date-range';
+import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
 
 const RoomReservation = ({ room }) => {
   const [state, setState] = useState([
     {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
+      startDate: new Date(room.from),
+      endDate: new Date(room.to),
+      key: 'selection',
     },
-  ]);
+  ])
 
   const handleSelect = (ranges) => {
     setState([ranges.selection]);
@@ -26,14 +26,21 @@ const RoomReservation = ({ room }) => {
       <hr />
       <div className="flex justify-center">
         {/* Calender */}
-        <DateRangePicker
+        <DateRange
           showDateDisplay={false}
-          onChange={item => setState([item.selection])}
-          ranges={state}
+          rangeColors={['#0D98BA']}
+          onChange={item => {
+            console.log(item)
+            setState([
+              {
+                startDate: new Date(room.from),
+                endDate: new Date(room.to),
+                key: 'selection',
+              },
+            ])
+          }}
           moveRangeOnFirstSelection={false}
-          rangeColors={["#3b82f6"]}
-          editableDateInputs={true}
-          className="w-full"
+          ranges={state}
         />
         
       </div>
