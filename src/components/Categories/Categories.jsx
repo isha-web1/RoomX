@@ -2,7 +2,7 @@ import Container from "../shared/Navbar/Container"
 import { categories } from "./CategoriesData"
 import CategoryBox from "./CategoryBox"
 
-const Categories = () => {
+ const Categories = () => {
   return (
     <Container>
       <div className='pt-4 flex items-center justify-between overflow-x-auto'>
@@ -14,4 +14,5 @@ const Categories = () => {
   )
 }
 
-export default Categories
+export default Categories;
+
