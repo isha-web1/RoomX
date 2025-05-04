@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { imageUpload } from "../../../api/utils";
 import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
 
 const AddRoom = () => {
   const navigate = useNavigate();
@@ -24,6 +25,19 @@ const AddRoom = () => {
   const handleDates = (item) => {
     setDates(item.selection);
   };
+
+  const { mutateAsync } = useMutation({
+    mutationFn: async roomData => {
+      const { data } = await axiosSecure.post(`/room`, roomData)
+      return data
+    },
+    onSuccess: () => {
+      console.log('Data Saved Successfully')
+      toast.success('Room Added Successfully!')
+      navigate('/dashboard/my-listings')
+      setLoading(false)
+    },
+  })
 
   //   Form handler
   const handleSubmit = async (e) => {
