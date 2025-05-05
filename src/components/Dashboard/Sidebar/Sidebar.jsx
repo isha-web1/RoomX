@@ -10,10 +10,13 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import logo from '../../../assets/images/logo.png'
+import useRole from '../../../hooks/useRole';
 
 const Sidebar = () => {
   const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
+  const [role, isLoading] = useRole()
+  console.log(role, isLoading)
 
   // Sidebar Responsive Handler
   const handleToggle = () => {

@@ -7,6 +7,7 @@ import img from "../../../assets/images/logo.png";
 import placeHolder from "../../../assets/images/placeholder.jpg";
 import toast from "react-hot-toast";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import HostModal from "../../Modal/HostRequestModal";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -62,7 +63,7 @@ const Navbar = () => {
                 <div className="hidden md:block">
                   {/* {!user && ( */}
                   <button
-                    // disabled={!user}
+                    disabled={!user}
                     onClick={() => setIsModalOpen(true)}
                     className="disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition"
                   >
@@ -71,11 +72,11 @@ const Navbar = () => {
                   {/* )} */}
                 </div>
                 {/* Modal */}
-                {/* <HostModal
+                <HostModal
                   isOpen={isModalOpen}
                   closeModal={closeModal}
                   modalHandler={modalHandler}
-                /> */}
+                />
                 {/* Dropdown btn */}
                 <div
                   onClick={() => setIsOpen(!isOpen)}
