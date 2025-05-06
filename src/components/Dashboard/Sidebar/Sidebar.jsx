@@ -13,6 +13,8 @@ import logo from "../../../assets/images/logo.png";
 import useRole from "../../../hooks/useRole";
 import MenuItem from "./Menu/MenuItem";
 import HostMenu from "./Menu/HostMenu";
+import GuestMenu from "./Menu/GuestMenu";
+import AdminMenu from "./Menu/AdminMenu";
 
 const Sidebar = () => {
   const { logOut } = useAuth();
@@ -86,7 +88,9 @@ const Sidebar = () => {
                 address="/dashboard"
                 icon={BsGraphUp}
               />
+            {role === 'guest' && <GuestMenu />}
             {role === 'host' && <HostMenu />}
+            {role === 'admin' && <AdminMenu />}
             </nav>
           </div>
         </div>
