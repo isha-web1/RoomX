@@ -12,6 +12,8 @@ import AddRoom from "../pages/Dashboard/Host/AddRoom";
 import MyListings from "../pages/Dashboard/Host/MyListings";
 import Profile from "../pages/Dashboard/Common/Profile";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
+import PrivateRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,27 +33,29 @@ export const router = createBrowserRouter([
   },
   {
      path : "/dashboard",
-     element : <DashboardLayout/>,
+     element : <PrivateRoute><DashboardLayout/></PrivateRoute>,
      children : [
       {
         index : true,
-        element : <Statistics></Statistics>
+        element : <PrivateRoute> <Statistics></Statistics></PrivateRoute>
       },
       {
         path : 'add-room',
-        element : <AddRoom/>
+        element : <PrivetRoute><AddRoom/></PrivetRoute>
       },
       {
         path : 'my-listings',
-        element : <MyListings/>
+        element : <PrivetRoute><MyListings/></PrivetRoute>
       },
       {
          path : 'manage-users',
-         element : <ManageUsers/>
+         element : <PrivetRoute> 
+                  <AdminRoute><ManageUsers/></AdminRoute>
+                  </PrivetRoute>
       },
       {
         path : 'profile',
-        element : <Profile/>
+        element : <PrivetRoute><Profile/></PrivetRoute>
       }
      ]
   },
