@@ -14,6 +14,7 @@ import Profile from "../pages/Dashboard/Common/Profile";
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import PrivateRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
+import HostRoute from "./HostRoute";
 
 export const router = createBrowserRouter([
   {
@@ -41,11 +42,15 @@ export const router = createBrowserRouter([
       },
       {
         path : 'add-room',
-        element : <PrivetRoute><AddRoom/></PrivetRoute>
+        element : <PrivetRoute>
+                 <HostRoute> <AddRoom/></HostRoute>
+                 </PrivetRoute>
       },
       {
         path : 'my-listings',
-        element : <PrivetRoute><MyListings/></PrivetRoute>
+        element : <PrivetRoute>
+                  <HostRoute><MyListings/></HostRoute>
+                  </PrivetRoute>
       },
       {
          path : 'manage-users',
