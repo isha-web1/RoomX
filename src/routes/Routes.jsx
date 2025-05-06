@@ -15,6 +15,7 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import PrivateRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
 import HostRoute from "./HostRoute";
+import MyBookings from "../pages/Dashboard/Guest/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
          path : 'manage-users',
          element : <PrivetRoute> 
                   <AdminRoute><ManageUsers/></AdminRoute>
+                  </PrivetRoute>
+      },
+      {
+         path : 'my-bookings',
+         element : <PrivetRoute> 
+                 <MyBookings/>
                   </PrivetRoute>
       },
       {
