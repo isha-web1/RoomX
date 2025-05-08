@@ -10,10 +10,11 @@ import { format } from 'date-fns'
 import { Fragment } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
+import CheckoutForm from '../Form/CheckoutForm'
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 
-const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
+const BookingModal = ({ closeModal, isOpen, bookingInfo, refetch }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -77,11 +78,11 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                 <hr className='mt-8 ' />
                 <Elements stripe={stripePromise}>
                   {/* checkout form */}
-                  {/* <CheckoutForm
+                  <CheckoutForm
                     bookingInfo={bookingInfo}
                     closeModal={closeModal}
                     refetch={refetch}
-                  /> */}
+                  />
                 </Elements>
                 <div className='flex mt-2 justify-around'>
                   <button
