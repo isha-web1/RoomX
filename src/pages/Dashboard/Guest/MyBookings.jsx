@@ -1,10 +1,33 @@
-
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingSpinner from "../../../components/shared/LoadingSpinner";
+import BookingDataRow from "../../../components/TableRows/BookingDataRow";
 
 const MyBookings = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  //   Fetch Bookings Data
+
+  const {
+    data: bookings = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["my-bookings", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/my-bookings/${user?.email}`);
+
+      return data;
+    },
+  });
+
+  console.log(bookings);
+  if (isLoading) return <LoadingSpinner />;
   return (
     <>
-     
-
+   
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -50,7 +73,17 @@ const MyBookings = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{/* Table Row Data */}</tbody>
+                <tbody>
+                  {/* Table Row Data */}
+
+                  {bookings.map((booking) => (
+                    <BookingDataRow
+                      key={booking._id}
+                      booking={booking}
+                      refetch={refetch}
+                    />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
