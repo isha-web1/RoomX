@@ -1,9 +1,18 @@
+import LoadingSpinner from "../../../components/shared/LoadingSpinner"
+import AdminStatistics from "../Admin/AdminStatistics"
+import useRole from '../../../hooks/useRole.js'
+
+
 const Statistics = () => {
-    return (
-      <div>
-        <h1>Welcome to dashboard: Statistics Page</h1>
-      </div>
-    )
-  }
-  
-  export default Statistics
+  const [role, isLoading] = useRole()
+  if (isLoading) return <LoadingSpinner />
+  return (
+    <>
+      {role === 'admin' && <AdminStatistics />}
+      {/* {role === 'host' && <HostStatistics />}
+      {role === 'guest' && <GuestStatistics />} */}
+    </>
+  )
+}
+
+export default Statistics
