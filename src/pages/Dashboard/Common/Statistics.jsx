@@ -1,6 +1,8 @@
 import LoadingSpinner from "../../../components/shared/LoadingSpinner"
 import AdminStatistics from "../Admin/AdminStatistics"
 import useRole from '../../../hooks/useRole.js'
+import HostStatistics from "../Host/HostStatistics.jsx"
+import GuestStatistics from "../Guest/GuestStatistics.jsx"
 
 
 const Statistics = () => {
@@ -9,8 +11,8 @@ const Statistics = () => {
   return (
     <>
       {role === 'admin' && <AdminStatistics />}
-      {/* {role === 'host' && <HostStatistics />}
-      {role === 'guest' && <GuestStatistics />} */}
+      {role === 'host' && <HostStatistics />}
+      {role === 'guest' && <GuestStatistics />}
     </>
   )
 }
